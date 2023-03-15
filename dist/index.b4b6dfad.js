@@ -2955,7 +2955,7 @@ $RefreshReg$(_c, "FlixApplication");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/main-view/main-view":"4gflv"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("c4a3065ecd0054dd");
 
@@ -27140,7 +27140,136 @@ module.exports = require("e4093d439bee81f");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lJZlQ":[function() {},{}],"km3Ru":[function(require,module,exports) {
+},{}],"4gflv":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f7a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$f7a6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const [movies, setMovies] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch("https://flix-api-7f9j.onrender.com/movies").then((response)=>response.json()).then((data)=>{
+            const apiMovies = data;
+            setMovies(apiMovies);
+        });
+    }, []);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 21,
+        columnNumber: 13
+    }, undefined);
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "The list is empty!"
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 26,
+        columnNumber: 16
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
+                }
+            }, movie._id, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 32,
+                columnNumber: 17
+            }, undefined))
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 30,
+        columnNumber: 9
+    }, undefined);
+};
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
+_c = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
+
+  $parcel$ReactRefreshHelpers$f7a6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bwuIu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$67b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieCard = ({ movie , onMovieClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>{
+            onMovieClick(movie);
+        },
+        children: movie.Title
+    }, void 0, false, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 3,
+        columnNumber: 9
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("2751f5ecd3c3d654");
 function debounce(func, delay) {
@@ -27273,211 +27402,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"2751f5ecd3c3d654":"786KC"}],"4gflv":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$f7a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f7a6.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "MainView", ()=>MainView);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _movieCard = require("../movie-card/movie-card");
-var _movieView = require("../movie-view/movie-view");
-var _s = $RefreshSig$();
-const MainView = ()=>{
-    _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            _id: 1,
-            Title: "A New York Christmas Wedding",
-            Description: "A Yuletide angel shows a bride what could have been if she had followed her secret feelings for her best friend.",
-            Genre: {
-                Name: "Drama",
-                Description: "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone."
-            },
-            Director: {
-                Name: "Otoja Abit",
-                Bio: "First-generation American writer/director/producer/actor OTOJA ABIT (pronounced 'O-toe-jay Abbitt') is best known for his award-winning debut short, Jitters, in which he wrote, directed, produced, and starred. Otoja expanded on his short Jitters' theme with A New York Christmas Wedding, which entered the independent film festival circuit with runs at the American Black FilmFestival, UrbanWorld Film Festival, Martha's Vineyard African-American Film Festival, among many others. The first-of-its-kind urban-leaning holiday film touched on some of the themes involving the LGBTQIA community, 21st-century views on love, religion, family, and more. Acquired by and exclusively premiering globally on Netflix on November 2020, the film was highlighted in the New York Times for it's uniqueness. Otoja's past credits include Guest Star on CBS's BULL, HBO's The Night of, NBC's Blackish, Marvel's The Defenders and NBC's limited series The Slap. The only son of driven Nigerian parents, Abit was born in Brooklyn and grew up in Queens, NY. Otoja got his start in the industry interning at The Labyrinth theatre company, his first big project was working as the assistant director on Broadway's 2011 revival of That Championship Season, directed by Gregory Mosher and starring Kiefer Sutherland, Brian Cox, Jim Gaffigan, Jason Patric, and Chris Noth. Otoja then went on to book roles in both television and film. His list of film credits includes The Humbling, directed by Barry Levinson and playing opposite Al Pacino; 'Paris' in Aleta Chappelle's Romeo & Juliet in Harlem; and gay liberation pioneer, Marsha P Johnson in Roland Emmerich's Stonewall. Otoja is a recipient of 2019 'Rising Star Award'provided by Bushwick Film Festival. With the success of Jitters, Otoja founded his production company Willful Productions.",
-                Birthyear: "1985"
-            },
-            imageURL: "https://m.media-amazon.com/images/M/MV5BYjM2NjZhYWMtODQwYy00ZmMzLTlhMzctMTI5MGZjMDdkOTBjXkEyXkFqcGdeQXVyMjE5OTk3NjY@._V1_QL75_UY281_CR1,0,190,281_.jpg",
-            Featured: true
-        },
-        {
-            _id: 2,
-            Title: "A Secret Love",
-            Description: "A former baseball player keeps her lesbian relationship a secret from her family for seven decades.",
-            Genre: {
-                Name: "Documentary",
-                Description: "Documentary is a genre of movie making that uses video & film scenes, photographs and/or sound of real people and real events which when edited together creates a particular story, viewpoint, message or experience."
-            },
-            Director: {
-                Name: "Chris Bolan",
-                Bio: "Chris Bolan is known for A Secret Love (2020), Monsterland (2020) and Billions (2016).",
-                Birthyear: ""
-            },
-            imageURL: "https://m.media-amazon.com/images/M/MV5BNzRlMmUzNjUtMDczOC00YjQ5LWE0NDMtY2RkNzI5ODA4NmU3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
-            Featured: true
-        },
-        {
-            _id: 3,
-            Title: "Beauty",
-            Description: "A young singer on the brink of a promising career finds herself torn between a domineering family, industry pressures and her love for her girlfriend.",
-            Genre: {
-                Name: "Drama",
-                Description: "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone."
-            },
-            Director: {
-                Name: "Andrew Dosunmu",
-                Bio: "Andrew Dosunmu is known for Mother of George (2013), Hot Irons (1999) and Restless City (2011).",
-                Birthyear: ""
-            },
-            imageURL: "https://m.media-amazon.com/images/M/MV5BYTA4YTlkNTktMGQwNC00N2QwLWFlMzYtMWRmZjM3ZmUzMzFjXkEyXkFqcGdeQXVyMTM2Mzg4MA@@._V1_FMjpg_UX1000_.jpg",
-            Featured: true
-        },
-        {
-            _id: 4,
-            Title: "Bruised",
-            Description: "Jackie Justice, a disgraced MMA fighter who has failed at the one thing she's ever been good at - fighting. When 6-year-old Manny, the son she walked out on years ago, returns to her doorstep, Jackie has to conquer her own demons.",
-            Genre: {
-                Name: "Drama",
-                Description: "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone."
-            },
-            Director: {
-                Name: "Halle Berry",
-                Bio: "Halle Berry is an American actress. Her breakthrough film role was in the romantic comedy Boomerang (1992), alongside Eddie Murphy, which led to roles in The Flintstones (1994) and Bulworth (1998) as well as the television film Introducing Dorothy Dandridge (1999), for which she won a Primetime Emmy Award and a Golden Globe Award. She launched a production company, 606 Films, in 2014 and has been involved in the production of a number of projects in which she performed, such as the CBS science fiction series Extant (2014-2015). She appeared in the action films Kingsman: The Golden Circle (2017) and John Wick: Chapter 3 - Parabellum (2019) and made her directorial debut with the Netflix drama Bruised (2020).",
-                Birthyear: "1966"
-            },
-            imageURL: "https://m.media-amazon.com/images/M/MV5BMWRjZGZiNjktNDU3Ni00ZWZkLWEwNDEtZDcwMTA3ZTdmMzEzXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
-            Featured: false
-        },
-        {
-            _id: 5,
-            Title: "Carol",
-            Description: "Therese Belivet spots the beautiful, elegant Carol perusing the doll displays in a 1950s Manhattan department store. The two women develop a fast bond that becomes a love with complicated consequences.",
-            Genre: {
-                Name: "Drama",
-                Description: "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone."
-            },
-            Director: {
-                Name: "Todd Haynes",
-                Bio: "Todd Haynes was always interested in art, and made amateur movies and painted while he was still a child. He attended Brown university and majored in art and semiotics. After he graduated he moved to New York City and made the controversial short film Superstar: The Karen Carpenter Story (1987).",
-                Birthyear: "1961"
-            },
-            imageURL: "https://m.media-amazon.com/images/M/MV5BMTczNTQ4OTEyNV5BMl5BanBnXkFtZTgwNDgyMDI3NjE@._V1_FMjpg_UX1000_.jpg",
-            Featured: true
-        }
-    ]);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-        movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 93,
-        columnNumber: 13
-    }, undefined);
-    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "The list is empty!"
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 98,
-        columnNumber: 16
-    }, undefined);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
-                onMovieClick: (newSelectedMovie)=>{
-                    setSelectedMovie(newSelectedMovie);
-                }
-            }, movie._id, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 104,
-                columnNumber: 17
-            }, undefined))
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 102,
-        columnNumber: 9
-    }, undefined);
-};
-_s(MainView, "4UnvoZYia8rufxcI8X4K93tuBPQ=");
-_c = MainView;
-var _c;
-$RefreshReg$(_c, "MainView");
-
-  $parcel$ReactRefreshHelpers$f7a6.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bwuIu":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$67b2.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const MovieCard = ({ movie , onMovieClick  })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        onClick: ()=>{
-            onMovieClick(movie);
-        },
-        children: movie.Title
-    }, void 0, false, {
-        fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 3,
-        columnNumber: 9
-    }, undefined);
-};
-_c = MovieCard;
-var _c;
-$RefreshReg$(_c, "MovieCard");
-
-  $parcel$ReactRefreshHelpers$67b2.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"ggaUx":[function(require,module,exports) {
+},{"2751f5ecd3c3d654":"786KC"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27572,6 +27497,6 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequire08d5")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequire08d5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
