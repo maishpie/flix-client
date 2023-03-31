@@ -1,5 +1,6 @@
 import { Col, Card, Form, Button } from "react-bootstrap";
 import { useState } from "react";
+import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) => {
     const [username, setUsername] = useState("");
@@ -7,9 +8,9 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
 
-    // let favoriteMovies = movies.filter((movie) => {
-    //     user.favoriteMovies.includes(movie._id);
-    // })
+    let favoriteMovies = movies.filter((movie) => {
+        user.FavoriteMovies.includes(movie._id);
+    })
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -69,55 +70,79 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
 
     return (
         <>
-            <Col md={6}>
+            <Col className="mt-5 mb-5" md={12}>
                 <Card>
                     <Card.Title>Hello {user.Username}!</Card.Title>
                 </Card>
             </Col>
-            <Card>
-                <Card.Title>Update Information</Card.Title>
-                <Card.Body>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group>
-                            <Form.Label>Username: </Form.Label>
-                            <Form.Control
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control
-                                type="password"
-                                placeholder="Enter your password"
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Email:</Form.Label>
-                            <Form.Control
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Birthday:</Form.Label>
-                            <Form.Control
-                                type="date"
-                                value={birthday}
-                                onChange={(e) => setBirthday(e.target.value)} />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button variant="danger" onClick={() => {
-                            if (confirm("Are you sure? Your account will be permanently deleted.")) {
-                                handleDelete();
-                            }
-                        }}>Delete Account</Button>
-                    </Form>
-                </Card.Body>
-            </Card>
+            <Col>
+                <Card>
+                    <Card.Title>Update Information</Card.Title>
+                    <Card.Subtitle>Password is required to make any changes</Card.Subtitle>
+                    <Card.Body>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group>
+                                <Form.Label>Username: </Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={username}
+                                    placeholder={user.Username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Password:</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Enter your password"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Email:</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    value={email}
+                                    placeholder={user.Email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Birthday:</Form.Label>
+                                <Form.Control
+                                    type="date"
+                                    value={birthday}
+                                    placeholder={user.Birthday}
+                                    onChange={(e) => setBirthday(e.target.value)} />
+                            </Form.Group>
+                            <Button variant="primary" type="submit">Submit</Button>
+                            <Button variant="danger" onClick={() => {
+                                if (confirm("Are you sure? Your account will be permanently deleted.")) {
+                                    handleDelete();
+                                }
+                            }}>Delete Account</Button>
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </Col>
+            <Col>
+                <h4>Your Favorite Movies</h4>
+            </Col>
+            <Col>
+                {favoriteMovies.length === 0 && (
+                    <Card>
+                        <Card.Title>No favorites</Card.Title>
+                    </Card>
+                )}
+                {
+                    favoriteMovies.map((movie) => (<Card>
+                        <Card.Title>{movie.Title}</Card.Title>
+                    </Card>))
+                }
+            </Col>
+
+
         </>
 
     );

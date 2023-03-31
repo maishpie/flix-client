@@ -88,7 +88,7 @@ export const MainView = () => {
                                 ) : movies.length === 0 ? (
                                     <Col>The list is empty!</Col>
                                 ) : <Col md={8}>
-                                    <MovieView movies={movies} />
+                                    <MovieView movies={movies} user={user} token={token} handleUpdate={handleUpdate} />
                                 </Col>}
                             </>
                         }
@@ -101,7 +101,7 @@ export const MainView = () => {
                                     <Navigate to="/login" replace />
                                 ) : (
                                     <Col>
-                                        <ProfileView user={user} handleUpdate={handleUpdate} token={token} onLoggedOut={() => {
+                                        <ProfileView movies={movies} user={user} handleUpdate={handleUpdate} token={token} onLoggedOut={() => {
                                             setUser(null);
                                             setToken(null);
                                             localStorage.clear();
