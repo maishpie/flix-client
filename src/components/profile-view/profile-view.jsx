@@ -1,4 +1,5 @@
-import { Col, Card, Form, Button } from "react-bootstrap";
+import React from "react";
+import { Row, CardGroup, Col, Card, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 
@@ -129,16 +130,28 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
             <Col>
                 <h4>Your Favorite Movies</h4>
             </Col>
-            <Col>
+            <Col md={12} className="p-2">
                 {favoriteMovies.length === 0 && (
                     <Card>
                         <Card.Title>No favorites</Card.Title>
                     </Card>
                 )}
+
                 {
-                    favoriteMovies.map((movie) => (<Card>
-                        <Card.Title>{movie.Title}</Card.Title>
-                    </Card>))
+                    <CardGroup as={Row} className="mt-3 mb-3">
+                        {
+                            favoriteMovies.map((movie) => (
+                                <Card key={movie._id} className="mr-1 p-2" style={{ marginRight: '2rem', maxWidth: '20rem' }}>
+                                    <Card.Img variant="top" src={movie.imageURL} />
+                                    <Card.Body>
+                                        <Card.Title>{movie.Title}</Card.Title>
+                                        <Card.Text>{movie.Director.Name}</Card.Text>
+                                        <Card.Text>{movie.Genre.Name}</Card.Text>
+                                    </Card.Body>
+                                </Card>)
+                            )
+                        }
+                    </CardGroup>
                 }
             </Col>
 
