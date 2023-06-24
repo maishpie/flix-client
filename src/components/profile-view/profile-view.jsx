@@ -9,9 +9,10 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
 
-    let favoriteMovies = movies.filter((movie) => {
-        user.FavoriteMovies.includes(movie._id);
+    let favoriteMovies = movies.filter((movie) =>  {
+        return user.FavoriteMovies.includes(movie._id)
     })
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
