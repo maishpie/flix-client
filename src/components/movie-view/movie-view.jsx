@@ -77,8 +77,8 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
                     <Button variant="primary" >Back</Button>
                 </Link>
                 {favorite ?
-                    <Button variant="danger" onClick={removeFavorite}>Remove from Favorites</Button>
-                    : <Button variant="success" onClick={addFavorite}>Add to Favorites</Button>}
+                    <Button className="float-end" variant="outline-danger" onClick={removeFavorite}>Remove from Favorites</Button>
+                    : <Button className="float-end" variant="outline-success" onClick={addFavorite}>Add to Favorites</Button>}
             </Card.Body>
         </Card>
     );

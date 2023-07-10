@@ -71,18 +71,19 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
 
     return (
         <>
-            <Col className="mt-5 mb-5" md={12}>
-                <Card>
+            <Col className="mt-4 mb-5" md={12}>
+                <Card className="p-4">
                     <Card.Title>Hello {user.Username}!</Card.Title>
+                    <Card.Body>You can view and edit your information below.</Card.Body>
                 </Card>
             </Col>
             <Col>
-                <Card>
+                <Card className="p-4">
                     <Card.Title>Update Information</Card.Title>
-                    <Card.Subtitle>Password is required to make any changes</Card.Subtitle>
+                    <Card.Subtitle>Password is required to make any changes.</Card.Subtitle>
                     <Card.Body>
                         <Form onSubmit={handleSubmit}>
-                            <Form.Group>
+                            <Form.Group className="mb-4">
                                 <Form.Label>Username: </Form.Label>
                                 <Form.Control
                                     type="text"
@@ -91,7 +92,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group className="mb-4">
                                 <Form.Label>Password:</Form.Label>
                                 <Form.Control
                                     type="password"
@@ -100,7 +101,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
                                     required
                                 />
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group className="mb-4">
                                 <Form.Label>Email:</Form.Label>
                                 <Form.Control
                                     type="email"
@@ -109,7 +110,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group className="mb-4">
                                 <Form.Label>Birthday:</Form.Label>
                                 <Form.Control
                                     type="date"
@@ -118,7 +119,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
                                     onChange={(e) => setBirthday(e.target.value)} />
                             </Form.Group>
                             <Button variant="primary" type="submit">Submit</Button>
-                            <Button variant="danger" onClick={() => {
+                            <Button variant="danger" className="float-end" onClick={() => {
                                 if (confirm("Are you sure? Your account will be permanently deleted.")) {
                                     handleDelete();
                                 }
@@ -128,11 +129,12 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
                 </Card>
             </Col>
             <Col>
+                <br></br>
                 <h4>Your Favorite Movies</h4>
             </Col>
             <Col md={12} className="p-2">
                 {favoriteMovies.length === 0 && (
-                    <Card>
+                    <Card className="p-4">
                         <Card.Title>No favorites</Card.Title>
                     </Card>
                 )}
@@ -141,14 +143,9 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
                     <CardGroup as={Row} className="mt-3 mb-3">
                         {
                             favoriteMovies.map((movie) => (
-                                <Card key={movie._id} className="mr-1 p-2" style={{ marginRight: '2rem', maxWidth: '20rem' }}>
-                                    <Card.Img variant="top" src={movie.imageURL} />
-                                    <Card.Body>
-                                        <Card.Title>{movie.Title}</Card.Title>
-                                        <Card.Text>{movie.Director.Name}</Card.Text>
-                                        <Card.Text>{movie.Genre.Name}</Card.Text>
-                                    </Card.Body>
-                                </Card>)
+                                <Col className="mb-5" key={movie._id} md={3}>
+                                    <MovieCard movie={movie} />
+                                </Col>)
                             )
                         }
                     </CardGroup>
